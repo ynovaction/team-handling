@@ -15,7 +15,6 @@
     <description>teams-handling</description>
     <properties>
         <java.version>11</java.version>
-        <!--        <sonar.organization>adniang75</sonar.organization>-->
         <sonar.organization>ynovaction</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
