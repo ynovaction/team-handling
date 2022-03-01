@@ -59,6 +59,8 @@ local.properties
 *.ipr
 *.ids
 *.orig
+/.idea/
+/.idea/**
 
 ######################
 # Visual Studio Code
@@ -124,6 +126,7 @@ Desktop.ini
 *.*~
 *~
 .merge_file*
+HELP.md
 
 ######################
 # Gradle Wrapper
@@ -139,6 +142,3 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
-/.idea/
-/.idea/**
-HELP.md
