@@ -19,11 +19,18 @@ public class TeamService {
 
     public TeamEntity getTeamById ( Long id ) {
         return teamRepository.findById( id )
-                .get();
+                .orElseThrow( () -> new RuntimeException( "Team with id " + id + " was not found" ) );
     }
 
     public TeamEntity createTeam ( TeamEntity teamEntity ) {
         return teamRepository.save( teamEntity );
+    }
+
+    public TeamEntity updateTeam ( TeamEntity teamEntity ) {
+        if ( teamRepository.existsById( teamEntity.getId() ) ) {
+            return teamRepository.save( teamEntity );
+        }
+        throw new RuntimeException( "Team with id " + teamEntity.getId() + " was not found" );
     }
 
     public void deleteTeam ( Long id ) {
