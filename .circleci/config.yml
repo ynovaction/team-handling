@@ -33,13 +33,17 @@ jobs:
       - checkout
       - run:
           name: Analyze on SonarCloud
-          command: mvn verify sonar:sonar -Dsonar.projectKey=ynovaction_team-handling
+          command: |
+            #- mvn verify jacoco:prepare-agent jacoco:report sonar:sonar -Dsonar.projectKey=ynovaction_team-handling
+            mvn clean jacoco:prepare-agent verify -Dsonar.projectKey=ynovaction_team-handling
+            mvn jacoco:report sonar:sonar -Dsonar.qualitygate.wait=true -Dsonar.projectKey=ynovaction_team-handling
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   build: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - build-and-test
+      - build-and-test:
+          context: SonarCloud
       - sonar-code-analysis:
           context: SonarCloud
