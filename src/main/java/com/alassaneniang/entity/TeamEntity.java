@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,7 +21,7 @@ import java.util.Objects;
 public class TeamEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue( strategy = IDENTITY )
     private Long id;
 
     private String name;
