@@ -3,6 +3,7 @@ package com.alassaneniang.controller;
 import com.alassaneniang.service.TeamDto;
 import com.alassaneniang.service.TeamFacadeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class TeamController {
     }
 
     @PostMapping
+    @ResponseStatus( HttpStatus.CREATED )
     public TeamDto createTeam ( @RequestBody TeamDto teamDto ) {
         return teamFacadeService.createTeam( teamDto );
     }

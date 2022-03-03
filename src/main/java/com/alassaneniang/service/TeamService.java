@@ -1,9 +1,11 @@
 package com.alassaneniang.service;
 
 import com.alassaneniang.entity.TeamEntity;
+import com.alassaneniang.exception.TeamInvalidException;
 import com.alassaneniang.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -23,6 +25,9 @@ public class TeamService {
     }
 
     public TeamEntity createTeam ( TeamEntity teamEntity ) {
+        if ( teamEntity == null || !StringUtils.hasText( teamEntity.getSlogan() ) ) {
+            throw new TeamInvalidException( "No teamentity or slogan empty" );
+        }
         return teamRepository.save( teamEntity );
     }
 
